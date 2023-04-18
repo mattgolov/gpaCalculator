@@ -57,7 +57,6 @@ namespace WindowsFormsApp1
                         "Invalid input",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                // Then Do your Thang
             }
         }
     }
