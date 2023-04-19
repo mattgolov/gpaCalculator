@@ -32,14 +32,32 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < grades.Count; i++)
+            gradePoints.Clear();
+            foreach (int grade in grades)
             {
-                if (grades[i] == percentageList[i])
+                // grade = 100
+                for(int i = 0; i < percentageList.Length; i++)
                 {
-                    gradePoints.Add(gpList[i]);
+                    if (grade >= percentageList[i])
+                    {
+                        gradePoints.Add(gpList[i]);
+                        break;
+                    }
                 }
             }
+                
+            
             Console.WriteLine(gradePoints);
+        }
+
+        private void AddGradeToList(Int32 grade)
+        {
+            grades.Add(grade);
+            listBox1.Items.Clear();
+            foreach (int element in grades)
+            {
+                listBox1.Items.Add(element.ToString());
+            }    
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -48,7 +66,7 @@ namespace WindowsFormsApp1
             {
                 try
                 {
-                    grades.Add(Int32.Parse(textBox1.Text));
+                    AddGradeToList(Int32.Parse(textBox1.Text));
                     textBox1.Clear();
                 }
                 catch (Exception ex)
@@ -58,6 +76,11 @@ namespace WindowsFormsApp1
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
