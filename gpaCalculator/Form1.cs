@@ -16,9 +16,10 @@ namespace WindowsFormsApp1
         List<int> grades = new List<int>();
         List<double> gradePoints = new List<double>();
         //Arrays cannot expand, function similar to code.org
-        int[] percentageList = { 93, 90, 87, 83, 80, 77, 73, 70, 67, 65 };
+        int[] percentageList = { 93, 90, 87, 83, 80, 77, 73, 70, 67, 65, 0 };
         double[] gpList = { 4, 3.7, 3.3, 3, 2.7, 2.3, 2, 1.7, 1.3, 1, 0 };
         double GPA;
+        double desiredGPA;
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            GPA = 0;
             gradePoints.Clear();
             foreach (int grade in grades)
             {
@@ -45,9 +47,15 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+            foreach (double gp in gradePoints)
+            {
+                GPA += gp;
+
+            }
+            GPA = GPA / gradePoints.Count;
                 
             
-            Console.WriteLine(gradePoints);
+            Console.WriteLine(GPA);
         }
 
         private void AddGradeToList(Int32 grade)
@@ -71,16 +79,27 @@ namespace WindowsFormsApp1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Cannot convert "+ textBox1.Text + "to integer.",
+                    MessageBox.Show("Cannot convert "+ textBox1.Text + " to integer.",
                         "Invalid input",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+               
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
