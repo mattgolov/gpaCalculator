@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class gradeInput : Form
     {
         //Lists can expand
         //grades stores user input grades
@@ -25,18 +25,13 @@ namespace WindowsFormsApp1
         double GPA;
         //Unfinished code, user input for how to improve grades to reach a desired gpa
         double desiredGPA;
-        public Form1()
+        public gradeInput()
         {
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //On click button1(change later sorry) 
-        private void button1_Click(object sender, EventArgs e)
+        //On click calculate 
+        private void calculate_Click(object sender, EventArgs e)
         {
             //Reset
             GPA = 0;
@@ -64,9 +59,10 @@ namespace WindowsFormsApp1
             }
             //divide to find average
             GPA = GPA / gradePoints.Count;
-                
+
             //temporarily output in console
             Console.WriteLine(GPA);
+            gpaLabel.Text = "GPA: " + Convert.ToString(Math.Round(GPA*10)/10); 
         }
 
         //function for adding input to list display
@@ -75,15 +71,15 @@ namespace WindowsFormsApp1
             //add grade from input to list
             grades.Add(grade);
             //clear display
-            listBox1.Items.Clear();
+            averageListBox.Items.Clear();
             //update display with new values
             foreach (int element in grades)
             {
-                listBox1.Items.Add(element.ToString());
+                averageListBox.Items.Add(element.ToString());
             }    
         }
         //input box
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void enterGrade(object sender, KeyPressEventArgs e)
         {
             //On enter key pressed
             if (e.KeyChar == (char)Keys.Return)
@@ -108,16 +104,7 @@ namespace WindowsFormsApp1
                
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }

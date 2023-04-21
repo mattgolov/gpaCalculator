@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class gradeInput
     {
         /// <summary>
         /// Required designer variable.
@@ -30,70 +30,126 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.calculate = new System.Windows.Forms.Button();
+            this.enterLabel = new System.Windows.Forms.Label();
+            this.averageListBox = new System.Windows.Forms.ListBox();
+            this.desiredInput = new System.Windows.Forms.TextBox();
+            this.title = new System.Windows.Forms.Label();
+            this.desiredLabel = new System.Windows.Forms.Label();
+            this.averageTitle = new System.Windows.Forms.Label();
+            this.desiredTitle = new System.Windows.Forms.Label();
+            this.gpaLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(425, 211);
+            this.textBox1.Location = new System.Drawing.Point(492, 289);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 31);
             this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.enterGrade);
             // 
-            // button1
+            // calculate
             // 
-            this.button1.Location = new System.Drawing.Point(672, 596);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 51);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Calc GPA";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.calculate.Location = new System.Drawing.Point(490, 342);
+            this.calculate.Name = "calculate";
+            this.calculate.Size = new System.Drawing.Size(131, 51);
+            this.calculate.TabIndex = 1;
+            this.calculate.Text = "Calculate GPA";
+            this.calculate.UseVisualStyleBackColor = true;
+            this.calculate.Click += new System.EventHandler(this.calculate_Click);
             // 
-            // label1
+            // enterLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(264, 211);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Enter Grade:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.enterLabel.AutoSize = true;
+            this.enterLabel.Location = new System.Drawing.Point(487, 240);
+            this.enterLabel.Name = "enterLabel";
+            this.enterLabel.Size = new System.Drawing.Size(134, 25);
+            this.enterLabel.TabIndex = 2;
+            this.enterLabel.Text = "Enter Grade:";
             // 
-            // listBox1
+            // averageListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 25;
-            this.listBox1.Location = new System.Drawing.Point(576, 211);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(310, 379);
-            this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.averageListBox.FormattingEnabled = true;
+            this.averageListBox.ItemHeight = 25;
+            this.averageListBox.Location = new System.Drawing.Point(673, 240);
+            this.averageListBox.Name = "averageListBox";
+            this.averageListBox.Size = new System.Drawing.Size(310, 379);
+            this.averageListBox.TabIndex = 3;
             // 
-            // textBox2
+            // desiredInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(1100, 211);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 31);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.desiredInput.Location = new System.Drawing.Point(1009, 289);
+            this.desiredInput.Name = "desiredInput";
+            this.desiredInput.Size = new System.Drawing.Size(100, 31);
+            this.desiredInput.TabIndex = 4;
+            this.desiredInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
-            // Form1
+            // title
+            // 
+            this.title.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Location = new System.Drawing.Point(500, 10);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(727, 82);
+            this.title.TabIndex = 5;
+            this.title.Text = "GPA Calculator";
+            this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // desiredLabel
+            // 
+            this.desiredLabel.AutoSize = true;
+            this.desiredLabel.Location = new System.Drawing.Point(1004, 229);
+            this.desiredLabel.Name = "desiredLabel";
+            this.desiredLabel.Size = new System.Drawing.Size(214, 25);
+            this.desiredLabel.TabIndex = 6;
+            this.desiredLabel.Text = "Enter Desired Grade:";
+            // 
+            // averageTitle
+            // 
+            this.averageTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageTitle.Location = new System.Drawing.Point(144, 147);
+            this.averageTitle.Name = "averageTitle";
+            this.averageTitle.Size = new System.Drawing.Size(727, 82);
+            this.averageTitle.TabIndex = 7;
+            this.averageTitle.Text = "Current Average";
+            this.averageTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // desiredTitle
+            // 
+            this.desiredTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.desiredTitle.Location = new System.Drawing.Point(789, 147);
+            this.desiredTitle.Name = "desiredTitle";
+            this.desiredTitle.Size = new System.Drawing.Size(727, 82);
+            this.desiredTitle.TabIndex = 8;
+            this.desiredTitle.Text = "Desired Average";
+            this.desiredTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gpaLabel
+            // 
+            this.gpaLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gpaLabel.Location = new System.Drawing.Point(492, 430);
+            this.gpaLabel.Name = "gpaLabel";
+            this.gpaLabel.Size = new System.Drawing.Size(120, 36);
+            this.gpaLabel.TabIndex = 9;
+            this.gpaLabel.Text = "GPA: ";
+            this.gpaLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // gradeInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1749, 1002);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.gpaLabel);
+            this.Controls.Add(this.desiredTitle);
+            this.Controls.Add(this.averageTitle);
+            this.Controls.Add(this.desiredLabel);
+            this.Controls.Add(this.title);
+            this.Controls.Add(this.desiredInput);
+            this.Controls.Add(this.averageListBox);
+            this.Controls.Add(this.enterLabel);
+            this.Controls.Add(this.calculate);
             this.Controls.Add(this.textBox1);
-            this.Name = "Form1";
+            this.Name = "gradeInput";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -103,10 +159,15 @@ namespace WindowsFormsApp1
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button calculate;
+        private System.Windows.Forms.Label enterLabel;
+        private System.Windows.Forms.ListBox averageListBox;
+        private System.Windows.Forms.TextBox desiredInput;
+        private System.Windows.Forms.Label title;
+        private System.Windows.Forms.Label desiredLabel;
+        private System.Windows.Forms.Label averageTitle;
+        private System.Windows.Forms.Label desiredTitle;
+        private System.Windows.Forms.Label gpaLabel;
     }
 }
 
