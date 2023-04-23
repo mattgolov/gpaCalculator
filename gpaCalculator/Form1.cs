@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class gradeInput : Form
     {
+        //Matthew/Mihir
         //Lists can expand
         //grades stores user input grades
         List<int> grades = new List<int>();
@@ -30,6 +31,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        //Matthew
         //On click calculate 
         private void calculate_Click(object sender, EventArgs e)
         {
@@ -64,12 +66,22 @@ namespace WindowsFormsApp1
             Console.WriteLine(GPA);
             gpaLabel.Text = "GPA: " + Convert.ToString(Math.Round(GPA*10)/10); 
         }
-
+        //Mihir
         //function for adding input to list display
         private void AddGradeToList(Int32 grade)
         {
             //add grade from input to list
-            grades.Add(grade);
+            if (grade <= 100 && grade >= 0)
+            {
+                grades.Add(grade);
+            }
+            else
+            {
+                MessageBox.Show(textBox1.Text + " is an invalid integer, please enter number between 0 and 100.",
+                    "Invalid Input",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
             //clear display
             averageListBox.Items.Clear();
             //update display with new values
@@ -78,6 +90,7 @@ namespace WindowsFormsApp1
                 averageListBox.Items.Add(element.ToString());
             }    
         }
+        //Matthew
         //input box
         private void enterGrade(object sender, KeyPressEventArgs e)
         {
@@ -104,7 +117,15 @@ namespace WindowsFormsApp1
                
         }
 
-       
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        //Mihir
+        private void desiredInput_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
