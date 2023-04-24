@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class gradeInput : Form
+    public partial class gpaForm : Form
     {
         //Matthew/Mihir
         //Lists can expand
@@ -26,7 +28,7 @@ namespace WindowsFormsApp1
         double GPA;
         //Unfinished code, user input for how to improve grades to reach a desired gpa
         double desiredGPA;
-        public gradeInput()
+        public gpaForm()
         {
             InitializeComponent();
         }
@@ -39,19 +41,11 @@ namespace WindowsFormsApp1
             GPA = 0;
             gradePoints.Clear();
             //Loop for every element in list
-            foreach (int grade in grades)
+            foreach (double grade in grades)
             {
-                //traverse percentage to convert
-                for(int i = 0; i < percentageList.Length; i++)
-                {
-                    //if grade matches percentage range, add the corresponding grade point value
-                    if (grade >= percentageList[i])
-                    {
-                        gradePoints.Add(gpList[i]);
-                        //break to go to next item in grades list
-                        break;
-                    }
-                }
+                //Add return of convertGrade to gradePoints list
+                gradePoints.Add(convertGrade("percentage", grade));
+
             }
             //add all grade point values together
             foreach (double gp in gradePoints)
@@ -62,8 +56,7 @@ namespace WindowsFormsApp1
             //divide to find average
             GPA = GPA / gradePoints.Count;
 
-            //temporarily output in console
-            Console.WriteLine(GPA);
+            //output
             gpaLabel.Text = "GPA: " + Convert.ToString(Math.Round(GPA*10)/10); 
         }
         //Mihir
@@ -85,7 +78,7 @@ namespace WindowsFormsApp1
             //clear display
             averageListBox.Items.Clear();
             //update display with new values
-            foreach (int element in grades)
+            foreach (double element in grades)
             {
                 averageListBox.Items.Add(element.ToString());
             }    
@@ -111,6 +104,7 @@ namespace WindowsFormsApp1
                         MessageBoxButtons.OK, MessageBoxIcon.Error);                }
             }
         }
+        
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -126,6 +120,34 @@ namespace WindowsFormsApp1
         private void desiredInput_TextChanged(object sender, EventArgs e)
         {
             
+        }
+        //Matthew Function
+        private double convertGrade(string type, double value)
+        {
+            //ouput variable
+            double result = 0;
+            //check conversion type 
+            if (type == "percentage")
+            {
+                //Iterate through percentageList
+                for (int i = 0; i < percentageList.Length; i++)
+                {
+                    //if grade matches percentage range, add the corresponding grade point value
+                    //selection
+                    if (value >= percentageList[i])
+                    {
+                        result = gpList[i];
+                        break;
+                    }
+                }
+            }
+            else if (type == "gradepoint" && value >= 1)
+            {
+                //approximate conversion using trendline equation because 4.0 GPA converts using scale rather than formula
+                result = Math.Round((value + 5.4) / 0.1014);
+            }
+            
+            return result;
         }
     }
 }

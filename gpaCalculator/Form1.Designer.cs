@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class gradeInput
+    partial class gpaForm
     {
         /// <summary>
         /// Required designer variable.
