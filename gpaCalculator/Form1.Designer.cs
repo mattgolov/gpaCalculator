@@ -43,20 +43,20 @@ namespace WindowsFormsApp1
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(369, 231);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(246, 150);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 26);
+            this.textBox1.Size = new System.Drawing.Size(52, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.enterGrade);
             // 
             // calculate
             // 
-            this.calculate.Location = new System.Drawing.Point(368, 274);
-            this.calculate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.calculate.Location = new System.Drawing.Point(245, 178);
+            this.calculate.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.calculate.Name = "calculate";
-            this.calculate.Size = new System.Drawing.Size(98, 41);
+            this.calculate.Size = new System.Drawing.Size(65, 27);
             this.calculate.TabIndex = 1;
             this.calculate.Text = "Calculate GPA";
             this.calculate.UseVisualStyleBackColor = true;
@@ -65,29 +65,29 @@ namespace WindowsFormsApp1
             // enterLabel
             // 
             this.enterLabel.AutoSize = true;
-            this.enterLabel.Location = new System.Drawing.Point(365, 192);
-            this.enterLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.enterLabel.Location = new System.Drawing.Point(243, 125);
+            this.enterLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.enterLabel.Name = "enterLabel";
-            this.enterLabel.Size = new System.Drawing.Size(101, 20);
+            this.enterLabel.Size = new System.Drawing.Size(67, 13);
             this.enterLabel.TabIndex = 2;
             this.enterLabel.Text = "Enter Grade:";
             // 
             // averageListBox
             // 
             this.averageListBox.FormattingEnabled = true;
-            this.averageListBox.ItemHeight = 20;
-            this.averageListBox.Location = new System.Drawing.Point(505, 192);
-            this.averageListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.averageListBox.Location = new System.Drawing.Point(337, 125);
+            this.averageListBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.averageListBox.Name = "averageListBox";
-            this.averageListBox.Size = new System.Drawing.Size(234, 304);
+            this.averageListBox.Size = new System.Drawing.Size(157, 199);
             this.averageListBox.TabIndex = 3;
+            this.averageListBox.SelectedIndexChanged += new System.EventHandler(this.averageListBox_SelectedIndexChanged);
             // 
             // desiredInput
             // 
-            this.desiredInput.Location = new System.Drawing.Point(757, 231);
-            this.desiredInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.desiredInput.Location = new System.Drawing.Point(505, 150);
+            this.desiredInput.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.desiredInput.Name = "desiredInput";
-            this.desiredInput.Size = new System.Drawing.Size(76, 26);
+            this.desiredInput.Size = new System.Drawing.Size(52, 20);
             this.desiredInput.TabIndex = 4;
             this.desiredInput.TextChanged += new System.EventHandler(this.desiredInput_TextChanged);
             this.desiredInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
@@ -95,10 +95,10 @@ namespace WindowsFormsApp1
             // title
             // 
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(375, 8);
-            this.title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.title.Location = new System.Drawing.Point(250, 5);
+            this.title.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(545, 66);
+            this.title.Size = new System.Drawing.Size(363, 43);
             this.title.TabIndex = 5;
             this.title.Text = "GPA Calculator";
             this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -106,20 +106,20 @@ namespace WindowsFormsApp1
             // desiredLabel
             // 
             this.desiredLabel.AutoSize = true;
-            this.desiredLabel.Location = new System.Drawing.Point(753, 183);
-            this.desiredLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.desiredLabel.Location = new System.Drawing.Point(502, 119);
+            this.desiredLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.desiredLabel.Name = "desiredLabel";
-            this.desiredLabel.Size = new System.Drawing.Size(160, 20);
+            this.desiredLabel.Size = new System.Drawing.Size(106, 13);
             this.desiredLabel.TabIndex = 6;
             this.desiredLabel.Text = "Enter Desired Grade:";
             // 
             // averageTitle
             // 
             this.averageTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.averageTitle.Location = new System.Drawing.Point(108, 118);
-            this.averageTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.averageTitle.Location = new System.Drawing.Point(72, 77);
+            this.averageTitle.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.averageTitle.Name = "averageTitle";
-            this.averageTitle.Size = new System.Drawing.Size(545, 66);
+            this.averageTitle.Size = new System.Drawing.Size(363, 43);
             this.averageTitle.TabIndex = 7;
             this.averageTitle.Text = "Current Average";
             this.averageTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -127,10 +127,10 @@ namespace WindowsFormsApp1
             // desiredTitle
             // 
             this.desiredTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desiredTitle.Location = new System.Drawing.Point(592, 118);
-            this.desiredTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.desiredTitle.Location = new System.Drawing.Point(395, 77);
+            this.desiredTitle.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.desiredTitle.Name = "desiredTitle";
-            this.desiredTitle.Size = new System.Drawing.Size(545, 66);
+            this.desiredTitle.Size = new System.Drawing.Size(363, 43);
             this.desiredTitle.TabIndex = 8;
             this.desiredTitle.Text = "Desired Average";
             this.desiredTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -138,19 +138,19 @@ namespace WindowsFormsApp1
             // gpaLabel
             // 
             this.gpaLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gpaLabel.Location = new System.Drawing.Point(369, 344);
-            this.gpaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.gpaLabel.Location = new System.Drawing.Point(246, 224);
+            this.gpaLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.gpaLabel.Name = "gpaLabel";
-            this.gpaLabel.Size = new System.Drawing.Size(90, 29);
+            this.gpaLabel.Size = new System.Drawing.Size(61, 20);
             this.gpaLabel.TabIndex = 9;
             this.gpaLabel.Text = "GPA: ";
             this.gpaLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // gradeInput
+            // gpaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1312, 802);
+            this.ClientSize = new System.Drawing.Size(875, 521);
             this.Controls.Add(this.gpaLabel);
             this.Controls.Add(this.desiredTitle);
             this.Controls.Add(this.averageTitle);
@@ -161,8 +161,8 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.enterLabel);
             this.Controls.Add(this.calculate);
             this.Controls.Add(this.textBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "gradeInput";
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Name = "gpaForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

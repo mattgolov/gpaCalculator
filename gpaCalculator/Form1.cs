@@ -59,8 +59,7 @@ namespace WindowsFormsApp1
             //output
             gpaLabel.Text = "GPA: " + Convert.ToString(Math.Round(GPA*10)/10); 
         }
-        //Mihir
-        //function for adding input to list display
+        //Mihir function for adding input to list display
         private void AddGradeToList(Int32 grade)
         {
             //add grade from input to list
@@ -119,7 +118,10 @@ namespace WindowsFormsApp1
         //Mihir
         private void desiredInput_TextChanged(object sender, EventArgs e)
         {
-            
+            foreach (Convert gradepoint, (char)Keys.return)
+            {
+                
+            }
         }
         //Matthew Function
         private double convertGrade(string type, double value)
@@ -148,6 +150,11 @@ namespace WindowsFormsApp1
             }
             
             return result;
+        }
+
+        private void averageListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
