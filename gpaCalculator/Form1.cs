@@ -6,10 +6,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace WindowsFormsApp1
 {
     public partial class gpaForm : Form
@@ -24,15 +24,26 @@ namespace WindowsFormsApp1
         //percentageList and gpList are used to convert, indexes correspond.
         int[] percentageList = { 93, 90, 87, 83, 80, 77, 73, 70, 67, 65, 0 };
         double[] gpList = { 4, 3.7, 3.3, 3, 2.7, 2.3, 2, 1.7, 1.3, 1, 0 };
+
+        SortedDictionary<double, int> gpaPercentagePairs = new SortedDictionary<double, int>();
+
         //stores final GPA
         double GPA;
         //Unfinished code, user input for how to improve grades to reach a desired gpa
-        double desiredGPA;
+        //double desiredGPA;
+        enum ConvertType
+        {
+            Percentage = 0,
+            GradePoint = 1
+        };
         public gpaForm()
         {
             InitializeComponent();
+            for (int i = 0; i < percentageList.Length; i++)
+            {
+                gpaPercentagePairs.Add(gpList[i], percentageList[i]);
+            }
         }
-
         //Matthew
         //On click calculate 
         private void calculate_Click(object sender, EventArgs e)
@@ -44,20 +55,17 @@ namespace WindowsFormsApp1
             foreach (double grade in grades)
             {
                 //Add return of convertGrade to gradePoints list
-                gradePoints.Add(convertGrade("percentage", grade));
-
+                gradePoints.Add(convertGrade(ConvertType.Percentage, grade));
             }
             //add all grade point values together
             foreach (double gp in gradePoints)
             {
                 GPA += gp;
-
             }
             //divide to find average
             GPA = GPA / gradePoints.Count;
-
             //output
-            gpaLabel.Text = "GPA: " + Convert.ToString(Math.Round(GPA*10)/10); 
+            gpaLabel.Text = "GPA: " + Convert.ToString(Math.Round(GPA * 10) / 10);
         }
         //Mihir function for adding input to list display
         private void AddGradeToList(Int32 grade)
@@ -69,10 +77,9 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show(textBox1.Text + " is an invalid integer, please enter number between 0 and 100.",
+                MessageBox.Show(this.gradeInput.Text + " is an invalid integer, please enter number between 0 and 100.",
                     "Invalid Input",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             //clear display
             averageListBox.Items.Clear();
@@ -80,7 +87,7 @@ namespace WindowsFormsApp1
             foreach (double element in grades)
             {
                 averageListBox.Items.Add(element.ToString());
-            }    
+            }
         }
         //Matthew
         //input box
@@ -92,68 +99,67 @@ namespace WindowsFormsApp1
                 //attempt to convert to integer and run AddGradeToList function with converted integer
                 try
                 {
-                    AddGradeToList(Int32.Parse(textBox1.Text));
-                    textBox1.Clear();
+                    AddGradeToList(Int32.Parse(gradeInput.Text));
+                    gradeInput.Clear();
                 }
                 //If conversion fails display error message
                 catch (Exception)
                 {
-                    MessageBox.Show("Cannot convert "+ textBox1.Text + " to integer.",
+                    MessageBox.Show("Cannot convert " + gradeInput.Text + " to integer.",
                         "Invalid input",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);                }
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-        
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-               
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //Mihir
-        private void desiredInput_TextChanged(object sender, EventArgs e)
-        {
-            foreach (Convert gradepoint, (char)Keys.return)
-            {
-                
-            }
-        }
         //Matthew Function
-        private double convertGrade(string type, double value)
+        private double convertGrade(ConvertType conversion, double value)
         {
             //ouput variable
             double result = 0;
             //check conversion type 
-            if (type == "percentage")
+            switch (conversion)
             {
-                //Iterate through percentageList
-                for (int i = 0; i < percentageList.Length; i++)
-                {
-                    //if grade matches percentage range, add the corresponding grade point value
-                    //selection
-                    if (value >= percentageList[i])
+                case ConvertType.Percentage:
                     {
-                        result = gpList[i];
-                        break;
+                        //Iterate through percentageList
+                        for (int i = 0; i < percentageList.Length; i++)
+                        {
+                            //if grade matches percentage range, add the corresponding grade point value
+                            //selection
+                            if (value >= percentageList[i])
+                            {
+                                result = gpList[i];
+                                break;
+                            }
+                        }
+                        return result;
                     }
-                }
+
+                case ConvertType.GradePoint:
+                    {
+                        //approximate conversion using trendline equation because 4.0 GPA converts using scale rather than formula
+                        result = Math.Round((value + 5.4) / 0.1014);
+                        return result;
+                    }
             }
-            else if (type == "gradepoint" && value >= 1)
-            {
-                //approximate conversion using trendline equation because 4.0 GPA converts using scale rather than formula
-                result = Math.Round((value + 5.4) / 0.1014);
-            }
-            
-            return result;
+
+            return 0;
         }
 
-        private void averageListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void convertGPAToPct_Click(object sender, EventArgs e)
         {
+            this.averageListBox.ClearSelected();
+            double _targetGPA = Convert.ToDouble(this.desiredInput.Text);
+
+            double _actualGPARequired = gpaPercentagePairs.Keys.Zip(gpaPercentagePairs.Keys.Skip(1), (a, b) => new { a, b }).FirstOrDefault(x => x.a <= _targetGPA && x.b >= _targetGPA).b;
+
+            this.lblPercentage.Text = _actualGPARequired.ToString();
+            averageListBox.SelectionMode = SelectionMode.MultiSimple;
+            foreach (var _grade in grades.Where(_grade => _grade < gpaPercentagePairs[_actualGPARequired]))
+            {
+                this.averageListBox.SetSelected(averageListBox.FindStringExact(_grade.ToString()), true);
+            }
 
         }
     }
