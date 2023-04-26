@@ -146,7 +146,7 @@ namespace WindowsFormsApp1
 
             return 0;
         }
-
+        //Mihir
         private void convertGPAToPct_Click(object sender, EventArgs e)
         {
             this.averageListBox.ClearSelected();
@@ -160,6 +160,11 @@ namespace WindowsFormsApp1
             {
                 this.averageListBox.SetSelected(averageListBox.FindStringExact(_grade.ToString()), true);
             }
+
+        }
+
+        private void gradeInput_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
