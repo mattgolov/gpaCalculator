@@ -38,7 +38,8 @@ namespace WindowsFormsApp1
             this.desiredTitle = new System.Windows.Forms.Label();
             this.gpaLabel = new System.Windows.Forms.Label();
             this.convertGPAToPct = new System.Windows.Forms.Button();
-            this.lblPercentage = new System.Windows.Forms.Label();
+            this.actualRequiredLbl = new System.Windows.Forms.Label();
+            this.percentageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -53,7 +54,7 @@ namespace WindowsFormsApp1
             // gradeInput
             // 
             this.gradeInput.Location = new System.Drawing.Point(246, 150);
-            this.gradeInput.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.gradeInput.Margin = new System.Windows.Forms.Padding(1);
             this.gradeInput.Name = "gradeInput";
             this.gradeInput.Size = new System.Drawing.Size(52, 20);
             this.gradeInput.TabIndex = 0;
@@ -63,7 +64,7 @@ namespace WindowsFormsApp1
             // calculate
             // 
             this.calculate.Location = new System.Drawing.Point(245, 178);
-            this.calculate.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.calculate.Margin = new System.Windows.Forms.Padding(1);
             this.calculate.Name = "calculate";
             this.calculate.Size = new System.Drawing.Size(65, 27);
             this.calculate.TabIndex = 1;
@@ -85,7 +86,7 @@ namespace WindowsFormsApp1
             // 
             this.averageListBox.FormattingEnabled = true;
             this.averageListBox.Location = new System.Drawing.Point(337, 125);
-            this.averageListBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.averageListBox.Margin = new System.Windows.Forms.Padding(1);
             this.averageListBox.Name = "averageListBox";
             this.averageListBox.Size = new System.Drawing.Size(157, 199);
             this.averageListBox.TabIndex = 3;
@@ -93,7 +94,7 @@ namespace WindowsFormsApp1
             // desiredInput
             // 
             this.desiredInput.Location = new System.Drawing.Point(505, 150);
-            this.desiredInput.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.desiredInput.Margin = new System.Windows.Forms.Padding(1);
             this.desiredInput.Name = "desiredInput";
             this.desiredInput.Size = new System.Drawing.Size(52, 20);
             this.desiredInput.TabIndex = 4;
@@ -155,7 +156,7 @@ namespace WindowsFormsApp1
             // convertGPAToPct
             // 
             this.convertGPAToPct.Location = new System.Drawing.Point(505, 178);
-            this.convertGPAToPct.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.convertGPAToPct.Margin = new System.Windows.Forms.Padding(1);
             this.convertGPAToPct.Name = "convertGPAToPct";
             this.convertGPAToPct.Size = new System.Drawing.Size(65, 27);
             this.convertGPAToPct.TabIndex = 10;
@@ -163,23 +164,35 @@ namespace WindowsFormsApp1
             this.convertGPAToPct.UseVisualStyleBackColor = true;
             this.convertGPAToPct.Click += new System.EventHandler(this.convertGPAToPct_Click);
             // 
-            // lblPercentage
+            // actualRequiredLbl
             // 
-            this.lblPercentage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblPercentage.Location = new System.Drawing.Point(505, 224);
-            this.lblPercentage.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lblPercentage.Name = "lblPercentage";
-            this.lblPercentage.Size = new System.Drawing.Size(104, 20);
-            this.lblPercentage.TabIndex = 11;
-            this.lblPercentage.Text = "Percentage: ";
-            this.lblPercentage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.actualRequiredLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.actualRequiredLbl.Location = new System.Drawing.Point(505, 224);
+            this.actualRequiredLbl.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.actualRequiredLbl.Name = "actualRequiredLbl";
+            this.actualRequiredLbl.Size = new System.Drawing.Size(104, 20);
+            this.actualRequiredLbl.TabIndex = 11;
+            this.actualRequiredLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.actualRequiredLbl.Click += new System.EventHandler(this.lblPercentage_Click);
+            // 
+            // percentageLabel
+            // 
+            this.percentageLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.percentageLabel.Location = new System.Drawing.Point(505, 255);
+            this.percentageLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.percentageLabel.Name = "percentageLabel";
+            this.percentageLabel.Size = new System.Drawing.Size(104, 20);
+            this.percentageLabel.TabIndex = 12;
+            this.percentageLabel.Text = "Percentage: ";
+            this.percentageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gpaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 521);
-            this.Controls.Add(this.lblPercentage);
+            this.Controls.Add(this.percentageLabel);
+            this.Controls.Add(this.actualRequiredLbl);
             this.Controls.Add(this.convertGPAToPct);
             this.Controls.Add(this.gpaLabel);
             this.Controls.Add(this.desiredTitle);
@@ -192,7 +205,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.calculate);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.gradeInput);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "gpaForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -214,6 +227,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label desiredTitle;
         private System.Windows.Forms.Label gpaLabel;
         private System.Windows.Forms.Button convertGPAToPct;
-        private System.Windows.Forms.Label lblPercentage;
+        private System.Windows.Forms.Label actualRequiredLbl;
+        private System.Windows.Forms.Label percentageLabel;
     }
 }

@@ -55,7 +55,7 @@ namespace WindowsFormsApp1
             foreach (double grade in grades)
             {
                 //Add return of convertGrade to gradePoints list
-                gradePoints.Add(convertGrade(ConvertType.Percentage, grade));
+                gradePoints.Add(ConvertGrade(ConvertType.Percentage, grade));
             }
             //add all grade point values together
             foreach (double gp in gradePoints)
@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
         }
 
         //Matthew Function
-        private double convertGrade(ConvertType conversion, double value)
+        private double ConvertGrade(ConvertType conversion, double value)
         {
             //ouput variable
             double result = 0;
@@ -138,13 +138,18 @@ namespace WindowsFormsApp1
 
                 case ConvertType.GradePoint:
                     {
-                        //approximate conversion using trendline equation because 4.0 GPA converts using scale rather than formula
+                        if (value >= 1)
+                        {
+                            //approximate conversion using trendline equation because 4.0 GPA converts using scale rather than formula
                         result = Math.Round((value + 5.4) / 0.1014);
                         return result;
+
+                        }
+                        return 0;
                     }
             }
-
             return 0;
+
         }
         //Mihir
         private void convertGPAToPct_Click(object sender, EventArgs e)
@@ -154,7 +159,8 @@ namespace WindowsFormsApp1
 
             double _actualGPARequired = gpaPercentagePairs.Keys.Zip(gpaPercentagePairs.Keys.Skip(1), (a, b) => new { a, b }).FirstOrDefault(x => x.a <= _targetGPA && x.b >= _targetGPA).b;
 
-            this.lblPercentage.Text = _actualGPARequired.ToString();
+            this.actualRequiredLbl.Text = _actualGPARequired.ToString();
+            this.percentageLabel.Text = "Percentage: " + ConvertGrade(ConvertType.GradePoint, _targetGPA).ToString();
             averageListBox.SelectionMode = SelectionMode.MultiSimple;
             foreach (var _grade in grades.Where(_grade => _grade < gpaPercentagePairs[_actualGPARequired]))
             {
@@ -164,6 +170,11 @@ namespace WindowsFormsApp1
         }
 
         private void gradeInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPercentage_Click(object sender, EventArgs e)
         {
 
         }
